@@ -1,0 +1,57 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "assist": {
+    "actions": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 100
+  },
+  "linter": {
+    "domains": {
+      "project": "all"
+    },
+    "rules": {
+      "recommended": true,
+      "style": {
+        "noNonNullAssertion": "off"
+      }
+    }
+  },
+  "javascript": {
+    "globals": ["Bun"],
+    "formatter": {
+      "operatorLinebreak": "before"
+    }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/*.jsonc",
+        ".vscode/*.json",
+        ".oxlintrc.json",
+        "pedantic.json",
+        "recommended.json",
+        "stage1.json",
+        "tsconfig.json"
+      ],
+      "json": {
+        "parser": {
+          "allowComments": true,
+          "allowTrailingCommas": true
+        }
+      }
+    },
+    {
+      "includes": ["**/*.spec.ts", "**/*.test.ts", "test/**"],
+      "linter": {
+        "domains": {
+          "test": "all"
+        }
+      }
+    }
+  ]
+}

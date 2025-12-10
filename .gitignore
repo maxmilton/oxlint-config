@@ -1,0 +1,6 @@
+*-lock.json*
+*-lock.yaml
+*.lock
+!/bun.lock
+/coverage/
+/node_modules/

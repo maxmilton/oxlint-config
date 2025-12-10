@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": ["./recommended.json", "./pedantic.json"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "pedantic": "warn",
+    "perf": "error",
+    "style": "warn",
+    "restriction": "error",
+    "nursery": "warn"
+  },
+  // https://github.com/oxc-project/javascript-globals/blob/main/src/lib.rs
+  "env": {
+    "builtin": true,
+    "commonjs": false,
+    "node": true,
+    "es2025": true
+  },
+  "globals": {
+    "Bun": "readonly"
+  }
+}

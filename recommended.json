@@ -1,0 +1,171 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["jsdoc", "node", "import", "promise", "unicorn", "typescript", "oxc"],
+  "rules": {
+    "eslint/curly": "off", // covered by formatters
+    "eslint/eqeqeq": ["error", { "null": "ignore" }],
+    "eslint/func-names": ["error", "as-needed"],
+    "eslint/func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "eslint/id-length": [
+      "error",
+      {
+        "exceptionPatterns": ["^[A-Z]$"], // uppercase letter for type names
+        "exceptions": ["_", "i", "j", "x", "y", "z"]
+      }
+    ],
+    "eslint/init-declarations": "off",
+    "eslint/max-depth": "off",
+    "eslint/max-len": "off", // covered by formatters
+    "eslint/max-lines-per-function": "off",
+    "eslint/max-lines": "off",
+    "eslint/max-nested-callbacks": "off",
+    "eslint/max-params": "off",
+    "eslint/new-cap": [
+      "error",
+      {
+        "capIsNew": false, // functional component names may be PascalCase
+        "newIsCap": true, // constructor names must be capitalized
+        "properties": true
+      }
+    ],
+    "eslint/no-magic-numbers": "off",
+    "eslint/no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "eslint/no-ternary": "off",
+    "eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "caughtErrors": true,
+        "ignoreRestSiblings": true,
+        "ignoreUsingDeclarations": false, // prefer to prefix var name with _
+        "reportUsedIgnorePattern": true, // used vars must not have _ prefix
+        "reportVarsOnlyUsedAsTypes": true,
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "vars": "all"
+      }
+    ],
+    "eslint/no-void": "off",
+    "eslint/sort-imports": "off", // covered by formatters
+    "eslint/sort-keys": "off",
+    "eslint/yoda": ["warn", "never"],
+    "import/consistent-type-specifier-style": "off", // covered by typescript
+    "import/exports-last": "off",
+    "import/extensions": [
+      "error",
+      {
+        "checkTypeImports": true,
+        "ignorePackages": true,
+        "js": "ignorePackages",
+        "json": "ignorePackages",
+        "jsx": "ignorePackages",
+        "ts": "ignorePackages",
+        "tsx": "ignorePackages"
+      }
+    ],
+    "import/group-exports": "off",
+    "import/max-dependencies": "off",
+    "import/no-named-export": "off",
+    "import/no-unassigned-import": "off",
+    "import/prefer-default-export": "off",
+    "jsdoc/empty-tags": "warn", // allow @private markers with comment
+    "node/no-process-env": "off", // can be used for build-time constants
+    "oxc/no-async-await": "off",
+    "oxc/no-const-enum": "off", // bun inlines at build-time
+    "oxc/no-optional-chaining": "off",
+    "oxc/no-rest-spread-properties": "off",
+    "promise/always-return": ["error", { "ignoreLastCallback": true }],
+    "promise/catch-or-return": ["error", { "allowThen": true }],
+    "typescript/consistent-indexed-object-style": ["warn", "record"],
+    "typescript/explicit-function-return-type": "off",
+    "typescript/explicit-module-boundary-types": "error",
+    "typescript/no-confusing-non-null-assertion": "warn",
+    "typescript/no-non-null-assertion": "warn",
+    "unicorn/filename-case": ["error", { "case": "kebabCase" }],
+    "unicorn/no-null": "off",
+    "unicorn/prefer-at": "off", // worse performance
+    "unicorn/prefer-global-this": "off", // prefer clear distinction between Bun and DOM
+    "unicorn/prefer-string-replace-all": "off", // poor runtime support and slower
+    "unicorn/switch-case-braces": ["error", "avoid"] // byte savings when minification doesn't remove
+  },
+  "overrides": [
+    {
+      "files": ["*.cjs"],
+      "env": {
+        "commonjs": true,
+        "es2025": false
+      },
+      "rules": {
+        "import/no-commonjs": "off",
+        "import/unambiguous": "off",
+        "oxc/no-async-await": "error",
+        "typescript/no-require-imports": "off"
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "jsdoc/require-param-type": "off",
+        "jsdoc/require-param": "off",
+        "jsdoc/require-returns-type": "off",
+        "jsdoc/require-returns": "off"
+      }
+    },
+    {
+      "files": ["*.d.ts"],
+      "rules": {
+        "import/unambiguous": "off"
+      }
+    },
+    {
+      "files": ["*.config.ts", "*.config.mjs", "*.config.js"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "eslint/func-style": ["error", "declaration"],
+        "import/no-default-export": "off",
+        "import/no-anonymous-default-export": "off"
+      }
+    },
+    {
+      "files": ["*.test.ts", "*.spec.ts", "test/**"],
+      "plugins": ["jest", "vitest"],
+      "env": {
+        "jest": true,
+        "node": true,
+        "vitest": true
+      },
+      "rules": {
+        "eslint/func-style": "off",
+        "eslint/no-empty-function": "off",
+        "eslint/no-magic-numbers": "off",
+        "import/no-namespace": "off",
+        "jest/no-commented-out-tests": "warn",
+        "promise/catch-or-return": "off",
+        "unicorn/filename-case": [
+          "error",
+          {
+            "cases": {
+              "kebabCase": true,
+              "pascalCase": true // test files can match PascalCase component filename prefix
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": ["build.ts"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "eslint/func-style": ["error", "declaration"],
+        "eslint/no-await-in-loop": "off",
+        "eslint/no-console": "off",
+        "eslint/no-magic-numbers": "off",
+        "import/no-namespace": "off"
+      }
+    }
+  ]
+}

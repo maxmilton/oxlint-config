@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "rules": {
+    "eslint/max-depth": "warn",
+    "eslint/max-nested-callbacks": "warn",
+    "eslint/no-magic-numbers": [
+      "warn",
+      {
+        "enforceConst": true,
+        "ignoreArrayIndexes": true,
+        "ignoreClassFieldInitialValues": true,
+        "ignoreDefaultValues": true,
+        "ignoreEnums": true,
+        "ignoreNumericLiteralTypes": true,
+        "ignoreReadonlyClassProperties": true,
+        "ignoreTypeIndexes": true
+      }
+    ],
+    "node/no-process-env": "error",
+    "unicorn/prefer-at": "warn",
+    "unicorn/prefer-global-this": "warn"
+  }
+}
