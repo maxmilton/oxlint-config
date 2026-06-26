@@ -5,12 +5,12 @@
     "module": "esnext",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
-    "esModuleInterop": false,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,
-    "allowJs": true,
+    "allowJs": true, // type=module
     "checkJs": true,
+    "maxNodeModuleJsDepth": 2,
     "noEmit": true,
 
     "strict": true,
