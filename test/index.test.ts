@@ -31,7 +31,6 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
 
   test("is valid JSON", () => {
     expect.assertions(1);
-    // oxlint-disable-next-line prefer-structured-clone
     expect(JSON.parse(JSON.stringify(content))).toEqual(content);
   });
 
@@ -78,6 +77,6 @@ describe("oxlint", () => {
       .nothrow()
       .quiet();
     expect(result.exitCode).not.toBe(0);
-    expect(result.stdout.toString()).toContain("Failed to parse configuration file.");
+    expect(result.stdout.toString()).toContain("Failed to parse oxlint configuration file.");
   });
 });
