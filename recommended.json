@@ -3,7 +3,7 @@
   "plugins": ["jsdoc", "node", "import", "promise", "unicorn", "typescript", "oxc"],
   "rules": {
     "eslint/curly": "off", // covered by formatters
-    "eslint/eqeqeq": ["error", { "null": "ignore" }],
+    "eslint/eqeqeq": ["error", "always", { "null": "ignore" }],
     "eslint/func-names": ["error", "as-needed"],
     "eslint/func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "eslint/id-length": [
@@ -15,7 +15,6 @@
     ],
     "eslint/init-declarations": "off",
     "eslint/max-depth": "off",
-    "eslint/max-len": "off", // covered by formatters
     "eslint/max-lines-per-function": "off",
     "eslint/max-lines": "off",
     "eslint/max-nested-callbacks": "off",
@@ -151,7 +150,8 @@
               "pascalCase": true // test files can match PascalCase component filename prefix
             }
           }
-        ]
+        ],
+        "vitest/prefer-importing-vitest-globals": "off" // use bun:test namespace imports
       }
     },
     {
