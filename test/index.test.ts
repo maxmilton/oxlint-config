@@ -31,6 +31,7 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
 
   test("is valid JSON", () => {
     expect.assertions(1);
+    // oxlint-disable-next-line unicorn/prefer-structured-clone
     expect(JSON.parse(JSON.stringify(content))).toEqual(content);
   });
 
