@@ -2,6 +2,7 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["jsdoc", "node", "import", "promise", "unicorn", "typescript", "oxc"],
   "rules": {
+    "eslint/capitalized-comments": "off",
     "eslint/curly": "off", // covered by formatters
     "eslint/eqeqeq": ["error", "always", { "null": "ignore" }],
     "eslint/func-names": ["error", "as-needed"],
@@ -19,6 +20,7 @@
     "eslint/max-lines": "off",
     "eslint/max-nested-callbacks": "off",
     "eslint/max-params": "off",
+    "eslint/max-statements": "off",
     "eslint/new-cap": [
       "error",
       {
@@ -27,6 +29,7 @@
         "properties": true
       }
     ],
+    "eslint/no-inline-comments": "off",
     "eslint/no-magic-numbers": "off",
     "eslint/no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "eslint/no-ternary": "off",
@@ -50,21 +53,12 @@
     "eslint/yoda": ["warn", "never"],
     "import/consistent-type-specifier-style": "off", // covered by typescript
     "import/exports-last": "off",
-    "import/extensions": [
-      "error",
-      {
-        "checkTypeImports": true,
-        "ignorePackages": true,
-        "js": "ignorePackages",
-        "json": "ignorePackages",
-        "jsx": "ignorePackages",
-        "ts": "ignorePackages",
-        "tsx": "ignorePackages"
-      }
-    ],
+    "import/extensions": ["error", "ignorePackages", { "checkTypeImports": true }],
     "import/group-exports": "off",
     "import/max-dependencies": "off",
     "import/no-named-export": "off",
+    "import/no-nodejs-modules": "off",
+    "import/no-relative-parent-imports": "off",
     "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
     "jsdoc/empty-tags": "warn", // allow @private markers with comment
@@ -81,6 +75,7 @@
     "typescript/no-confusing-non-null-assertion": "warn",
     "typescript/no-non-null-assertion": "warn",
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
+    "unicorn/import-style": "off",
     "unicorn/no-null": "off",
     "unicorn/prefer-at": "off", // worse performance
     "unicorn/prefer-global-this": "off", // prefer clear distinction between Bun and DOM
