@@ -1,0 +1,3 @@
+{
+  "extends": ["../../recommended.json", "../../stage1.json"]
+}

@@ -42,6 +42,29 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
     expect(result.stderr).toHaveLength(0);
     expect(result.stdout).not.toHaveLength(0);
   });
+
+  test("rules are alphabetically sorted", () => {
+    const { rules } = content as { rules: Record<string, unknown> };
+    const keys = Object.keys(rules);
+    expect(keys).toEqual(keys.toSorted((x, y) => x.localeCompare(y)));
+  });
+});
+
+describe("extends composition", () => {
+  const extendsFixtures = [
+    "extends-recommended-pedantic.json",
+    "extends-recommended-stage1.json",
+    "extends-all.json",
+  ];
+
+  test.each(extendsFixtures)("%s is a valid oxlint configuration", async (fixture) => {
+    expect.assertions(2);
+    const result = await $`oxlint --config="test/fixtures/${fixture}" --print-config`
+      .nothrow()
+      .quiet();
+    expect(result.exitCode).toBe(0);
+    expect(result.stderr).toHaveLength(0);
+  });
 });
 
 describe("oxlint", () => {
