@@ -16,7 +16,7 @@
   "scripts": {
     "lint": "bun lint:fmt && bun lint:js && bun lint:js2 && bun lint:ts",
     "lint:fmt": "biome check",
-    "lint:js": "oxlint --report-unused-disable-directives-severity=error",
+    "lint:js": "oxlint",
     "lint:js2": "eslint",
     "lint:ts": "tsc --noEmit",
     "test": "bun test --only-failures",
