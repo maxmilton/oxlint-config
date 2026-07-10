@@ -2,10 +2,10 @@
   "name": "@maxmilton/oxlint-config",
   "version": "0.0.2",
   "description": "Shared oxlint configurations targeting the Bun ecosystem",
-  "repository": "github:maxmilton/oxlint-config",
   "bugs": "https://github.com/maxmilton/oxlint-config/issues",
-  "author": "Max Milton <max@2okki.com>",
+  "repository": "github:maxmilton/oxlint-config",
   "license": "MIT",
+  "author": "Max Milton <max@2okki.com>",
   "type": "module",
   "main": "recommended.json",
   "files": [
