@@ -11,6 +11,8 @@ loadable oxlint configs.
 
 ## Commands
 
+Use bun for all commands & dev, not node.
+
 ```sh
 bun install                # install deps (peer dep: oxlint)
 bun run lint               # biome check + oxlint + eslint + tsc --noEmit (all must pass)
