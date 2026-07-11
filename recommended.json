@@ -135,7 +135,9 @@
         "eslint/no-empty-function": "off",
         "eslint/no-magic-numbers": "off",
         "import/no-namespace": "off",
-        "jest/no-commented-out-tests": "warn",
+        "jest/no-commented-out-tests": "off", // covered by vitest/no-commented-out-tests
+        "jest/no-conditional-in-test": "off", // covered by vitest/no-conditional-in-test
+        "jest/require-hook": "off", // covered by vitest/require-hook
         "promise/catch-or-return": "off",
         "unicorn/filename-case": [
           "error",
@@ -146,6 +148,7 @@
             }
           }
         ],
+        "vitest/no-commented-out-tests": "warn",
         "vitest/prefer-importing-vitest-globals": "off" // use bun:test namespace imports
       }
     },
