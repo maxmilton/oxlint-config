@@ -8,6 +8,8 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
   "editor.tabSize": 2,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.invisibleCharacters": true,
   "eslint.enable": true,
   "files.associations": {
     ".oxlintrc.json": "jsonc",
@@ -15,17 +17,14 @@
     "recommended.json": "jsonc",
     "stage1.json": "jsonc"
   },
+  "git.branchProtection": ["master"],
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "oxc.enable": true,
   "oxc.unusedDisableDirectives": "deny",
-  "git.branchProtection": ["master"],
   "prettier.enable": false, // use biome
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
 
   "[css]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[html]": {
@@ -33,13 +32,15 @@
   },
   "[javascript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
+      "source.organizeImports": "never",
+      "source.fixAll.eslint": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
+      "source.organizeImports": "never",
+      "source.fixAll.eslint": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -55,21 +56,24 @@
     "editor.unicodeHighlight.invisibleCharacters": true,
     "files.trimTrailingWhitespace": false
   },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[typescript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
+      "source.organizeImports": "never",
+      "source.fixAll.eslint": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
+      "source.organizeImports": "never",
+      "source.fixAll.eslint": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[yaml]": {
-    // TODO: Use biome once it supports formatting yaml files.
-    // "editor.defaultFormatter": "biomejs.biome"
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }

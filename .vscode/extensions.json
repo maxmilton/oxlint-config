@@ -3,8 +3,8 @@
     "biomejs.biome",
     "dbaeumer.vscode-eslint",
     "MylesMurphy.prettify-ts",
-    "oxc.oxc-vscode",
     "oven.bun-vscode",
+    "oxc.oxc-vscode",
     "tekumara.typos-vscode",
     "YoavBls.pretty-ts-errors"
   ],
