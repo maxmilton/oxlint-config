@@ -33,6 +33,7 @@
     "eslint/no-magic-numbers": "off",
     "eslint/no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "eslint/no-ternary": "off",
+    "eslint/no-undefined": "off",
     "eslint/no-unused-vars": [
       "warn",
       {
@@ -71,6 +72,13 @@
     "promise/catch-or-return": ["error", { "allowThen": true }],
     "typescript/consistent-indexed-object-style": ["warn", "record"],
     "typescript/explicit-function-return-type": "off",
+    "typescript/explicit-member-accessibility": [
+      "warn",
+      {
+        "accessibility": "explicit",
+        "overrides": { "constructors": "no-public" }
+      }
+    ],
     "typescript/explicit-module-boundary-types": "error",
     "typescript/no-confusing-non-null-assertion": "warn",
     "typescript/no-non-null-assertion": "warn",

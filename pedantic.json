@@ -16,7 +16,9 @@
         "ignoreTypeIndexes": true
       }
     ],
+    "eslint/no-undefined": "warn",
     "node/no-process-env": "error",
+    "typescript/explicit-member-accessibility": "error",
     "unicorn/prefer-at": "warn",
     "unicorn/prefer-global-this": "warn"
   }
