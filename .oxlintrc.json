@@ -3,7 +3,8 @@
   "extends": ["./recommended.json", "./pedantic.json"],
   "options": {
     "denyWarnings": true,
-    "reportUnusedDisableDirectives": "error"
+    "reportUnusedDisableDirectives": "error",
+    "respectEslintDisableDirectives": false
   },
   "categories": {
     "correctness": "error",
@@ -17,9 +18,10 @@
   // https://github.com/oxc-project/javascript-globals/blob/main/src/lib.rs
   "env": {
     "builtin": true,
-    "commonjs": false,
     "node": true,
-    "es2025": true
+    "commonjs": false,
+    "es2025": true,
+    "es2026": true
   },
   "globals": {
     "Bun": "readonly"
