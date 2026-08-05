@@ -2,7 +2,8 @@
   "biome.enabled": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
+    "source.fixAllDangerous": "never"
   },
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
@@ -20,9 +21,7 @@
   "git.branchProtection": ["master"],
   "js/ts.tsdk.path": "node_modules/typescript/lib",
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
-  "oxc.enable": true,
-  "oxc.unusedDisableDirectives": "deny",
-  "prettier.enable": false, // use biome
+  "oxc.enable.oxlint": true,
 
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
@@ -33,14 +32,16 @@
   "[javascript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "never",
-      "source.fixAll.eslint": "never"
+      "source.fixAll.eslint": "never",
+      "source.fixAll.oxc": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascriptreact]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "never",
-      "source.fixAll.eslint": "never"
+      "source.fixAll.eslint": "never",
+      "source.fixAll.oxc": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -62,14 +63,16 @@
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "never",
-      "source.fixAll.eslint": "never"
+      "source.fixAll.eslint": "never",
+      "source.fixAll.oxc": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "never",
-      "source.fixAll.eslint": "never"
+      "source.fixAll.eslint": "never",
+      "source.fixAll.oxc": "never"
     },
     "editor.defaultFormatter": "biomejs.biome"
   },
