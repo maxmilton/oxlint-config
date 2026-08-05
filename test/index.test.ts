@@ -46,7 +46,7 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
   test("rules are alphabetically sorted", () => {
     const { rules } = content as { rules: Record<string, unknown> };
     const keys = Object.keys(rules);
-    expect(keys).toEqual(keys.toSorted((x, y) => x.localeCompare(y)));
+    expect(keys).toEqual(keys.toSorted((keyA, keyB) => keyA.localeCompare(keyB)));
   });
 });
 
