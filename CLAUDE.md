@@ -20,8 +20,8 @@ bun run lint:fmt           # biome check only
 bun run lint:js            # oxlint only
 bun run lint:js2           # eslint only (rules oxlint doesn't cover yet)
 bun run lint:ts            # tsc --noEmit only
-bun test                   # run tests (--only-failures)
-bun test:ci                # coverage + randomized + rerun-each=3 (what CI runs)
+bun run test               # run tests (--only-failures)
+bun run test:ci            # coverage + randomized + rerun-each=3 (what CI runs)
 bun test test/index.test.ts -t "is valid JSON"   # run a single test/pattern
 ```
 
@@ -53,11 +53,13 @@ new failures there usually mean real gap, not duplicate finding.
 ### Tests (`test/index.test.ts`)
 
 For each published config file (`pedantic.json`, `recommended.json`, `stage1.json`), suite
-checks: exists w/ correct MIME type, parses as plain JSON-serializable object, and —
-critically — `oxlint --config="<file>" --print-config` exits 0 w/ empty stderr, i.e. oxlint
-actually accepts it as valid config. Separate `describe("oxlint")` block exercises oxlint's own
-config-resolution behavior (missing file, explicit config, default config), asserts malformed
-fixtures in `test/fixtures/invalid-config*.json` rejected.
+checks: exists w/ correct MIME type, parses as plain JSON-serializable object, rules keys
+alphabetically sorted (convention below is test-enforced), and — critically —
+`oxlint --config="<file>" --print-config` exits 0 w/ empty stderr, i.e. oxlint actually accepts
+it as valid config. `describe("extends composition")` validates preset combinations via
+`test/fixtures/extends-*.json`; new preset ⇒ add a fixture. Separate `describe("oxlint")` block
+exercises oxlint's own config-resolution behavior (missing file, explicit config, default
+config), asserts malformed fixtures in `test/fixtures/invalid-config*.json` rejected.
 
 Adding/changing rule in any preset: run whole suite (`bun test`) over single file —
 `--print-config` check catches invalid oxlint syntax, cheap.
