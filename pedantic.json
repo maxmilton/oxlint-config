@@ -1,6 +1,8 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "rules": {
+    // uppercase letters common in type names
+    "eslint/id-length": ["error", { "exceptions": ["_", "T", "K", "U", "V", "R", "X", "Y", "Z"] }],
     "eslint/max-depth": "warn",
     "eslint/max-nested-callbacks": "warn",
     "eslint/no-magic-numbers": [

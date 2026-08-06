@@ -10,8 +10,8 @@
     "eslint/id-length": [
       "error",
       {
-        "exceptionPatterns": ["^[A-Z]$"], // uppercase letter for type names
-        "exceptions": ["_", "i", "j", "x", "y", "z"]
+        "exceptionPatterns": ["^[A-Z]$"], // uppercase letters for type names
+        "exceptions": ["_", "a", "b", "i", "j", "k", "n", "x", "y", "z"]
       }
     ],
     "eslint/init-declarations": "off",
@@ -148,6 +148,7 @@
         "jest/require-hook": "off", // covered by vitest/require-hook
         "node/no-top-level-await": "off",
         "promise/catch-or-return": "off",
+        "typescript/prefer-readonly-parameter-types": "off",
         "unicorn/filename-case": [
           "error",
           {
@@ -172,7 +173,8 @@
         "eslint/no-console": "off",
         "eslint/no-magic-numbers": "off",
         "import/no-namespace": "off",
-        "node/no-top-level-await": "off"
+        "node/no-top-level-await": "off",
+        "typescript/prefer-readonly-parameter-types": "off"
       }
     }
   ]
