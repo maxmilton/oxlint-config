@@ -3,6 +3,6 @@
 *.bak
 *.lock
 !/bun.lock
-/.claude/
+/.claude/settings.local.json
 /coverage/
 /node_modules/
