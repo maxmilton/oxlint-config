@@ -82,6 +82,7 @@
     "typescript/explicit-module-boundary-types": "error",
     "typescript/no-confusing-non-null-assertion": "warn",
     "typescript/no-non-null-assertion": "warn",
+    "typescript/prefer-readonly-parameter-types": ["warn", { "ignoreInferredTypes": true }],
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
     "unicorn/import-style": "off",
     "unicorn/no-null": "off",

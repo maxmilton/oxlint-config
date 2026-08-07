@@ -21,6 +21,7 @@
     "eslint/no-undefined": "warn",
     "node/no-process-env": "error",
     "typescript/explicit-member-accessibility": "error",
+    "typescript/prefer-readonly-parameter-types": ["warn", { "ignoreInferredTypes": false }],
     "unicorn/prefer-at": "warn",
     "unicorn/prefer-global-this": "warn"
   }
