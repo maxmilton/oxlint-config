@@ -3,16 +3,16 @@
   "version": "0.0.8",
   "description": "Shared oxlint configurations targeting the Bun ecosystem",
   "bugs": "https://github.com/maxmilton/oxlint-config/issues",
-  "repository": "github:maxmilton/oxlint-config",
   "license": "MIT",
   "author": "Max Milton <max@2okki.com>",
-  "type": "module",
-  "main": "recommended.json",
+  "repository": "github:maxmilton/oxlint-config",
   "files": [
     "pedantic.json",
     "recommended.json",
     "stage1.json"
   ],
+  "type": "module",
+  "main": "recommended.json",
   "scripts": {
     "lint": "bun lint:fmt && bun lint:js && bun lint:ts",
     "lint:fmt": "oxfmt --check",

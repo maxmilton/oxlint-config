@@ -12,6 +12,7 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
   let content: object;
 
   beforeAll(async () => {
+    // oxlint-disable-next-line typescript/no-unsafe-type-assertion
     content = (await import(`../${filename}`, { with: { type: "jsonc" } })) as object;
   });
 
@@ -44,6 +45,7 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
   });
 
   test("rules are alphabetically sorted", () => {
+    // oxlint-disable-next-line typescript/no-unsafe-type-assertion
     const { rules } = content as { rules: Record<string, unknown> };
     const keys = Object.keys(rules);
     expect(keys).toEqual(keys.toSorted((keyA, keyB) => keyA.localeCompare(keyB)));
@@ -77,7 +79,7 @@ describe("oxlint", () => {
 
   test("returns zero exit code when specified config file is found", async () => {
     expect.assertions(2);
-    const result = await $`oxlint --config=".oxlintrc.json" --print-config`.nothrow().quiet();
+    const result = await $`oxlint --config=".oxlintrc.jsonc" --print-config`.nothrow().quiet();
     expect(result.exitCode).toBe(0);
     expect(result.stdout.toString()).not.toContain("No such file or directory");
   });
@@ -92,7 +94,7 @@ describe("oxlint", () => {
   const invalidConfigFixtures = [
     "invalid-config1.json",
     "invalid-config2.json",
-    "invalid-config3.json",
+    "invalid-config3.jsonc",
   ];
 
   test.each(invalidConfigFixtures)("returns non-zero exit code when for %s", async (fixture) => {
