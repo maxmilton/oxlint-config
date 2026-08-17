@@ -49,6 +49,7 @@
       }
     ],
     "eslint/no-void": "off",
+    "eslint/one-var": ["error", "never"],
     "eslint/sort-imports": "off", // covered by formatters
     "eslint/sort-keys": "off",
     "eslint/yoda": ["warn", "never"],
