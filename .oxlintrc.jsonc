@@ -4,7 +4,8 @@
   "options": {
     "denyWarnings": true,
     "reportUnusedDisableDirectives": "error",
-    "respectEslintDisableDirectives": false
+    "respectEslintDisableDirectives": false,
+    "typeAware": true,
   },
   "categories": {
     "correctness": "error",
@@ -13,7 +14,7 @@
     "perf": "error",
     "style": "warn",
     "restriction": "error",
-    "nursery": "warn"
+    "nursery": "warn",
   },
   // https://github.com/oxc-project/javascript-globals/blob/main/src/lib.rs
   "env": {
@@ -21,9 +22,9 @@
     "node": true,
     "commonjs": false,
     "es2025": true,
-    "es2026": true
+    "es2026": true,
   },
   "globals": {
-    "Bun": "readonly"
-  }
+    "Bun": "readonly",
+  },
 }
