@@ -74,13 +74,7 @@
     "promise/catch-or-return": ["error", { "allowThen": true }],
     "typescript/consistent-indexed-object-style": ["warn", "record"],
     "typescript/explicit-function-return-type": "off",
-    "typescript/explicit-member-accessibility": [
-      "warn",
-      {
-        "accessibility": "explicit",
-        "overrides": { "constructors": "no-public" }
-      }
-    ],
+    "typescript/explicit-member-accessibility": "error",
     "typescript/explicit-module-boundary-types": "error",
     "typescript/no-confusing-non-null-assertion": "warn",
     "typescript/no-non-null-assertion": "warn",
