@@ -95,6 +95,12 @@
   },
   "overrides": [
     {
+      "files": ["*.js", "*.cjs"],
+      "rules": {
+        "jsdoc/check-tag-names": ["error", { "definedTags": ["remarks"], "typed": false }]
+      }
+    },
+    {
       "files": ["*.cjs"],
       "env": {
         "commonjs": true,
