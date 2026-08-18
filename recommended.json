@@ -79,6 +79,7 @@
     "typescript/no-confusing-non-null-assertion": "warn",
     "typescript/no-non-null-assertion": "warn",
     "typescript/prefer-readonly-parameter-types": ["warn", { "ignoreInferredTypes": true }],
+    "typescript/promise-function-async": "off",
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
     "unicorn/import-style": "off",
     "unicorn/no-null": "off",
