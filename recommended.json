@@ -63,6 +63,7 @@
     "import/no-relative-parent-imports": "off",
     "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["remarks"], "typed": true }],
     "jsdoc/empty-tags": "warn", // allow @private markers with comment
     "node/no-process-env": "off", // can be used for build-time constants
     "oxc/no-async-await": "off",
