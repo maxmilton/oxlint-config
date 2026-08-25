@@ -90,7 +90,7 @@
   },
   "overrides": [
     {
-      "files": ["*.js", "*.cjs"],
+      "files": ["*.js", "*.mjs", "*.cjs"],
       "rules": {
         "jsdoc/check-tag-names": ["error", { "definedTags": ["remarks"], "typed": false }]
       }
@@ -149,6 +149,7 @@
         "import/no-namespace": "off",
         "jest/no-commented-out-tests": "off", // covered by vitest/no-commented-out-tests
         "jest/no-conditional-in-test": "off", // covered by vitest/no-conditional-in-test
+        "jest/prefer-each": "off", // covered by vitest/prefer-each
         "jest/require-hook": "off", // covered by vitest/require-hook
         "node/no-top-level-await": "off",
         "promise/catch-or-return": "off",
