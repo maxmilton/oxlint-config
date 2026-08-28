@@ -37,15 +37,18 @@
     "eslint/no-unused-vars": [
       "warn",
       {
-        "args": "after-used",
-        "caughtErrors": true,
-        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "args": "all", // prefer to prefix arg name with _
+        "caughtErrors": "all",
+        "vars": "all",
+        "ignoreClassWithStaticInitBlock": false,
+        "ignoreRestSiblings": false, // prefer to prefix name with _
         "ignoreUsingDeclarations": false, // prefer to prefix var name with _
         "reportUsedIgnorePattern": true, // used vars must not have _ prefix
-        "reportVarsOnlyUsedAsTypes": true,
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "vars": "all"
+        "reportVarsOnlyUsedAsTypes": true
       }
     ],
     "eslint/no-void": "off",
