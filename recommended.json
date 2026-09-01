@@ -45,7 +45,7 @@
         "caughtErrors": "all",
         "vars": "all",
         "ignoreClassWithStaticInitBlock": false,
-        "ignoreRestSiblings": false, // prefer to prefix name with _
+        "ignoreRestSiblings": false, // prefer to prefix var name with _
         "ignoreUsingDeclarations": false, // prefer to prefix var name with _
         "reportUsedIgnorePattern": true, // used vars must not have _ prefix
         "reportVarsOnlyUsedAsTypes": true
