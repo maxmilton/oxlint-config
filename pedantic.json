@@ -28,7 +28,6 @@
     ],
     "eslint/no-undefined": "warn",
     "node/no-process-env": "error",
-    "oxclippy/too-many-lines": "warn",
     "typescript/no-non-null-assertion": "error",
     "typescript/no-unsafe-assignment": "error",
     "typescript/no-unsafe-member-access": "error",

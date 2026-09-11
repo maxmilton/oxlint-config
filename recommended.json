@@ -67,7 +67,8 @@
     ],
     "eslint/no-void": "off",
     "eslint/one-var": ["error", "never"],
-    "eslint/sort-imports": "off", // covered by formatters
+    // "eslint/sort-imports": "off", // covered by formatters
+    "eslint/sort-imports": ["warn", { "ignoreCase": true, "ignoreDeclarationSort": true }], // TODO: Remove once oxfmt supports sorting import members.
     "eslint/sort-keys": "off",
     "eslint/yoda": ["warn", "never"],
     "import/consistent-type-specifier-style": "off", // covered by typescript
@@ -87,6 +88,7 @@
     "oxc/no-const-enum": "off", // bun inlines at build-time
     "oxc/no-optional-chaining": "off",
     "oxc/no-rest-spread-properties": "off",
+    "oxclippy/cognitive-complexity": "off", // covered by eslint/complexity
     "oxclippy/prefer-structured-clone": "off", // covered by unicorn/prefer-structured-clone
     "oxclippy/too-many-lines": "off", // covered by eslint/max-lines-per-function
     "promise/always-return": ["error", { "ignoreLastCallback": true }],
