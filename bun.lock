@@ -4,11 +4,9 @@
   "workspaces": {
     "": {
       "name": "@maxmilton/oxlint-config",
-      "dependencies": {
-        "oxclippy": "^0.2.0",
-      },
       "devDependencies": {
         "@types/bun": "1.4.0",
+        "oxclippy": "0.2.0",
         "oxfmt": "0.66.0",
         "oxlint": "1.81.0",
         "oxlint-tsgolint": "7.0.2001",
