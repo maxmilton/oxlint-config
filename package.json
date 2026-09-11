@@ -1,6 +1,6 @@
 {
   "name": "@maxmilton/oxlint-config",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Opinionated Oxlint configurations targeting the Bun ecosystem",
   "bugs": "https://github.com/maxmilton/oxlint-config/issues",
   "license": "MIT",
