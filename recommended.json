@@ -1,6 +1,20 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["jsdoc", "node", "import", "promise", "unicorn", "typescript", "oxc"],
+  "jsPlugins": ["oxclippy"],
+  "extends": ["./node_modules/oxclippy/presets/recommended.json"],
+  "options": {
+    "reportUnusedDisableDirectives": "error"
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "pedantic": "off",
+    "perf": "error",
+    "style": "warn",
+    "restriction": "error",
+    "nursery": "warn"
+  },
   "rules": {
     "eslint/capitalized-comments": "off",
     "eslint/curly": "off", // covered by formatters
@@ -10,7 +24,7 @@
     "eslint/id-length": [
       "error",
       {
-        "exceptionPatterns": ["^[A-Z]$"], // uppercase letters for type names
+        "exceptionPatterns": ["^[A-Z]$"], // uppercase type names
         "exceptions": ["_", "a", "b", "i", "j", "k", "n", "x", "y", "z"]
       }
     ],
@@ -73,14 +87,19 @@
     "oxc/no-const-enum": "off", // bun inlines at build-time
     "oxc/no-optional-chaining": "off",
     "oxc/no-rest-spread-properties": "off",
+    "oxclippy/prefer-structured-clone": "off", // covered by unicorn/prefer-structured-clone
+    "oxclippy/too-many-lines": "off", // covered by eslint/max-lines-per-function
     "promise/always-return": ["error", { "ignoreLastCallback": true }],
     "promise/catch-or-return": ["error", { "allowThen": true }],
     "typescript/consistent-indexed-object-style": ["warn", "record"],
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-member-accessibility": "error",
     "typescript/explicit-module-boundary-types": "error",
-    "typescript/no-confusing-non-null-assertion": "warn",
+    "typescript/no-confusing-non-null-assertion": "error",
     "typescript/no-non-null-assertion": "warn",
+    "typescript/no-unsafe-assignment": "warn",
+    "typescript/no-unsafe-member-access": "warn",
+    "typescript/no-unsafe-return": "warn",
     "typescript/prefer-readonly-parameter-types": ["warn", { "ignoreInferredTypes": true }],
     "typescript/promise-function-async": "off",
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
@@ -102,7 +121,7 @@
       "files": ["*.cjs"],
       "env": {
         "commonjs": true,
-        "es2025": false
+        "es2026": false
       },
       "rules": {
         "import/no-commonjs": "off",
@@ -114,10 +133,10 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "jsdoc/require-param-type": "off",
         "jsdoc/require-param": "off",
-        "jsdoc/require-returns-type": "off",
-        "jsdoc/require-returns": "off"
+        "jsdoc/require-param-type": "off",
+        "jsdoc/require-returns": "off",
+        "jsdoc/require-returns-type": "off"
       }
     },
     {
@@ -129,20 +148,28 @@
     {
       "files": ["*.config.ts", "*.config.mjs", "*.config.js"],
       "env": {
-        "node": true
+        "builtins": true,
+        "es2026": true,
+        "bun": true,
+        "commonjs": false
       },
       "rules": {
         "eslint/func-style": ["error", "declaration"],
+        "import/no-anonymous-default-export": "off",
         "import/no-default-export": "off",
-        "import/no-anonymous-default-export": "off"
+        "node/no-sync": "off",
+        "node/no-top-level-await": "off"
       }
     },
     {
       "files": ["*.test.ts", "*.spec.ts", "test/**"],
       "plugins": ["jest", "vitest"],
       "env": {
+        "builtins": true,
+        "es2026": true,
+        "bun": true,
+        "commonjs": false,
         "jest": true,
-        "node": true,
         "vitest": true
       },
       "rules": {
@@ -154,18 +181,11 @@
         "jest/no-conditional-in-test": "off", // covered by vitest/no-conditional-in-test
         "jest/prefer-each": "off", // covered by vitest/prefer-each
         "jest/require-hook": "off", // covered by vitest/require-hook
+        "node/no-sync": "off",
         "node/no-top-level-await": "off",
+        "oxclippy/similar-names": "off",
         "promise/catch-or-return": "off",
         "typescript/prefer-readonly-parameter-types": "off",
-        "unicorn/filename-case": [
-          "error",
-          {
-            "cases": {
-              "kebabCase": true,
-              "pascalCase": true // test files can match PascalCase component filename prefix
-            }
-          }
-        ],
         "vitest/no-commented-out-tests": "warn",
         "vitest/prefer-importing-vitest-globals": "off" // use bun:test namespace imports
       }
@@ -173,7 +193,10 @@
     {
       "files": ["build.ts"],
       "env": {
-        "node": true
+        "builtins": true,
+        "es2026": true,
+        "bun": true,
+        "commonjs": false
       },
       "rules": {
         "eslint/func-style": ["error", "declaration"],
@@ -181,6 +204,7 @@
         "eslint/no-console": "off",
         "eslint/no-magic-numbers": "off",
         "import/no-namespace": "off",
+        "node/no-sync": "off",
         "node/no-top-level-await": "off",
         "typescript/prefer-readonly-parameter-types": "off"
       }

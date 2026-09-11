@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [],
   "rules": {
     "unicorn/filename-case": [
       "error",
@@ -14,5 +15,21 @@
     "unicorn/prefer-dom-node-append": "off",
     "unicorn/prefer-dom-node-remove": "off",
     "unicorn/prefer-query-selector": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.test.ts", "*.spec.ts", "test/**"],
+      "rules": {
+        "unicorn/filename-case": [
+          "error",
+          {
+            "cases": {
+              "kebabCase": true,
+              "pascalCase": true // test files may match PascalCase component filename prefix
+            }
+          }
+        ]
+      }
+    }
+  ]
 }

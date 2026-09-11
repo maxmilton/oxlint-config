@@ -1,7 +1,15 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [],
+  "jsPlugins": ["oxclippy"],
+  "extends": ["./node_modules/oxclippy/presets/pedantic.json"],
+  "categories": {
+    "suspicious": "error",
+    "style": "error",
+    "pedantic": "warn"
+  },
   "rules": {
-    // uppercase letters common in type names
+    // common uppercase type names
     "eslint/id-length": ["error", { "exceptions": ["_", "T", "K", "U", "V", "R", "X", "Y", "Z"] }],
     "eslint/max-depth": "warn",
     "eslint/max-nested-callbacks": "warn",
@@ -20,6 +28,11 @@
     ],
     "eslint/no-undefined": "warn",
     "node/no-process-env": "error",
+    "oxclippy/too-many-lines": "warn",
+    "typescript/no-non-null-assertion": "error",
+    "typescript/no-unsafe-assignment": "error",
+    "typescript/no-unsafe-member-access": "error",
+    "typescript/no-unsafe-return": "error",
     "typescript/prefer-readonly-parameter-types": ["warn", { "ignoreInferredTypes": false }],
     "unicorn/prefer-at": "warn",
     "unicorn/prefer-global-this": "warn"
