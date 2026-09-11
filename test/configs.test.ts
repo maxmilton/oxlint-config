@@ -1,39 +1,39 @@
-import { beforeAll, describe, expect, test } from "bun:test";
+import { describe, expect, test } from "bun:test";
 import { $ } from "bun";
+import type { OxlintConfig } from "oxlint";
+import pedanticConfig from "../pedantic.json" with { type: "jsonc" };
+import recommendedConfig from "../recommended.json" with { type: "jsonc" };
+import stage1Config from "../stage1.json" with { type: "jsonc" };
 
-const configFiles = [
-  ["pedantic.json", "application/json;charset=utf-8"],
-  ["recommended.json", "application/json;charset=utf-8"],
-  ["stage1.json", "application/json;charset=utf-8"],
+const configs = [
+  // oxlint-disable-next-line typescript/no-unsafe-type-assertion
+  ["recommended.json", recommendedConfig as unknown as OxlintConfig],
+  // oxlint-disable-next-line typescript/no-unsafe-type-assertion
+  ["pedantic.json", pedanticConfig as unknown as OxlintConfig],
+  // oxlint-disable-next-line typescript/no-unsafe-type-assertion
+  ["stage1.json", stage1Config as unknown as OxlintConfig],
 ] as const;
 
-describe.each(configFiles)("%s", (filename, mimetype) => {
-  const file = Bun.file(filename);
-  let content: object;
-
-  beforeAll(async () => {
-    // oxlint-disable-next-line typescript/no-unsafe-type-assertion
-    content = (await import(`../${filename}`, { with: { type: "jsonc" } })) as object;
-  });
-
+describe.each(configs)("%s", (filename, config) => {
   test("exists with correct MIME type", () => {
     expect.assertions(3);
+    const file = Bun.file(filename);
     expect(file.exists()).resolves.toBeTruthy();
     expect(file.size).toBeGreaterThan(0);
-    expect(file.type).toBe(mimetype);
+    expect(file.type).toBe("application/json;charset=utf-8");
   });
 
   test("is an object", () => {
     expect.assertions(3);
-    expect(content).toBeObject();
-    expect(content).not.toBeNull();
-    expect(content).not.toBeArray();
+    expect(config).toBeObject();
+    expect(config).not.toBeNull();
+    expect(config).not.toBeArray();
   });
 
   test("is valid JSON", () => {
     expect.assertions(1);
     // oxlint-disable-next-line unicorn/prefer-structured-clone
-    expect(JSON.parse(JSON.stringify(content))).toEqual(content);
+    expect(JSON.parse(JSON.stringify(config))).toEqual(config);
   });
 
   test("is a valid oxlint configuration", async () => {
@@ -44,11 +44,28 @@ describe.each(configFiles)("%s", (filename, mimetype) => {
     expect(result.stdout).not.toHaveLength(0);
   });
 
-  test("rules are alphabetically sorted", () => {
-    // oxlint-disable-next-line typescript/no-unsafe-type-assertion
-    const { rules } = content as { rules: Record<string, unknown> };
-    const keys = Object.keys(rules);
+  test.if("rules" in config)("rules are alphabetically sorted", () => {
+    expect.assertions(2);
+    expect(config.rules).toBeObject();
+    // oxlint-disable-next-line typescript/no-non-null-assertion
+    const keys = Object.keys(config.rules!);
     expect(keys).toEqual(keys.toSorted((keyA, keyB) => keyA.localeCompare(keyB)));
+  });
+
+  describe.if("overrides" in config)("overrides", () => {
+    test("rules are alphabetically sorted", () => {
+      expect.hasAssertions();
+      expect(config.overrides).toBeArray();
+      // oxlint-disable-next-line typescript/no-non-null-assertion
+      for (const override of config.overrides!) {
+        // oxlint-disable-next-line vitest/no-conditional-in-test
+        if ("rules" in override) {
+          expect(override.rules).toBeObject();
+          const keys = Object.keys(override.rules);
+          expect(keys).toEqual(keys.toSorted((keyA, keyB) => keyA.localeCompare(keyB)));
+        }
+      }
+    });
   });
 });
 
@@ -97,7 +114,7 @@ describe("oxlint", () => {
     "invalid-config3.jsonc",
   ];
 
-  test.each(invalidConfigFixtures)("returns non-zero exit code when for %s", async (fixture) => {
+  test.each(invalidConfigFixtures)("returns non-zero exit code for %s", async (fixture) => {
     expect.assertions(2);
     const result = await $`oxlint --config="test/fixtures/${fixture}" --print-config`
       .nothrow()
