@@ -1,7 +1,7 @@
 {
   "name": "@maxmilton/oxlint-config",
   "version": "0.0.15",
-  "description": "Shared oxlint configurations targeting the Bun ecosystem",
+  "description": "Opinionated Oxlint configurations targeting the Bun ecosystem",
   "bugs": "https://github.com/maxmilton/oxlint-config/issues",
   "license": "MIT",
   "author": "Max Milton <max@2okki.com>",
@@ -12,7 +12,6 @@
     "stage1.json"
   ],
   "type": "module",
-  "main": "recommended.json",
   "scripts": {
     "lint": "bun lint:fmt && bun lint:js && bun lint:ts",
     "lint:fmt": "oxfmt --check",
