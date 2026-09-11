@@ -1,8 +1,8 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": [],
-  "jsPlugins": ["oxclippy"],
-  "extends": ["./node_modules/oxclippy/presets/pedantic.json"],
+  "jsPlugins": ["./dist/oxclippy.js"],
+  "extends": ["./dist/pedantic.json"],
   "categories": {
     "suspicious": "error",
     "style": "error",

@@ -24,6 +24,7 @@ jobs:
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
+      - run: bun run build
       - run: bun run test:ci --coverage-reporter=lcov --coverage-reporter=text
       - name: Report coverage
         if: ${{ github.repository_owner == 'maxmilton' }}
@@ -41,6 +42,7 @@ jobs:
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
+      - run: bun run build
       - run: bun run lint
 
   dedup:

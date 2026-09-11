@@ -4,4 +4,5 @@
 *.lock
 !/bun.lock
 /coverage/
+/dist/
 /node_modules/

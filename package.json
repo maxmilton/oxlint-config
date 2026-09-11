@@ -7,12 +7,14 @@
   "author": "Max Milton <max@2okki.com>",
   "repository": "github:maxmilton/oxlint-config",
   "files": [
+    "dist",
     "pedantic.json",
     "recommended.json",
     "stage1.json"
   ],
   "type": "module",
   "scripts": {
+    "build": "bun build.ts",
     "lint": "bun lint:fmt && bun lint:js && bun lint:ts",
     "lint:fmt": "oxfmt --check",
     "lint:js": "oxlint",
@@ -20,11 +22,9 @@
     "test": "bun test --only-failures",
     "test:ci": "bun test --coverage --randomize --rerun-each=3"
   },
-  "dependencies": {
-    "oxclippy": "^0.2.0"
-  },
   "devDependencies": {
     "@types/bun": "1.4.0",
+    "oxclippy": "0.2.0",
     "oxfmt": "0.66.0",
     "oxlint": "1.81.0",
     "oxlint-tsgolint": "7.0.2001",

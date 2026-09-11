@@ -1,8 +1,8 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["jsdoc", "node", "import", "promise", "unicorn", "typescript", "oxc"],
-  "jsPlugins": ["oxclippy"],
-  "extends": ["./node_modules/oxclippy/presets/recommended.json"],
+  "jsPlugins": ["./dist/oxclippy.js"],
+  "extends": ["./dist/recommended.json"],
   "options": {
     "reportUnusedDisableDirectives": "error"
   },

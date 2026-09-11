@@ -26,5 +26,5 @@
 
     "types": ["bun"]
   },
-  "include": ["*.config.js", "test"]
+  "include": ["*.config.js", "build.ts", "test"]
 }
