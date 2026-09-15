@@ -2,5 +2,5 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "ignorePatterns": ["CLAUDE.md"],
   "sortImports": { "newlinesBetween": false },
-  "sortPackageJson": true,
+  "sortPackageJson": { "sortScripts": true },
 }
