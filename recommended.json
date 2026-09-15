@@ -25,7 +25,7 @@
       "error",
       {
         "exceptionPatterns": ["^[A-Z]$"], // uppercase type names
-        "exceptions": ["_", "a", "b", "i", "j", "k", "n", "x", "y", "z"]
+        "exceptions": ["_", "a", "b", "i", "j", "h", "k", "n", "x", "y", "z"]
       }
     ],
     "eslint/init-declarations": "off",
@@ -81,7 +81,7 @@
     "import/no-relative-parent-imports": "off",
     "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
-    "jsdoc/check-tag-names": ["error", { "definedTags": ["remarks"], "typed": true }],
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["remarks", "typeParam"], "typed": true }],
     "jsdoc/empty-tags": "warn", // allow @private markers with comment
     "node/no-process-env": "off", // can be used for build-time constants
     "oxc/no-async-await": "off",
@@ -89,6 +89,7 @@
     "oxc/no-optional-chaining": "off",
     "oxc/no-rest-spread-properties": "off",
     "oxclippy/cognitive-complexity": "off", // covered by eslint/complexity
+    "oxclippy/needless-range-loop": "off", // covered by typescript/prefer-for-of
     "oxclippy/prefer-structured-clone": "off", // covered by unicorn/prefer-structured-clone
     "oxclippy/too-many-lines": "off", // covered by eslint/max-lines-per-function
     "promise/always-return": ["error", { "ignoreLastCallback": true }],
