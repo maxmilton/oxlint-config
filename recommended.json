@@ -108,6 +108,10 @@
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
     "unicorn/import-style": "off",
     "unicorn/no-null": "off",
+    "unicorn/numeric-separators-style": [
+      "warn",
+      { "hexadecimal": { "onlyIfContainsSeparator": true } }
+    ],
     "unicorn/prefer-at": "off", // worse performance
     "unicorn/prefer-global-this": "off", // prefer clear distinction between Bun and DOM
     "unicorn/prefer-string-replace-all": "off", // poor runtime support and slower
