@@ -25,12 +25,12 @@
   "devDependencies": {
     "@types/bun": "1.4.2",
     "oxclippy": "0.2.0",
-    "oxfmt": "0.67.0",
-    "oxlint": "1.82.0",
-    "oxlint-tsgolint": "7.0.2001",
+    "oxfmt": "0.70.0",
+    "oxlint": "1.85.0",
+    "oxlint-tsgolint": "7.0.2002",
     "typescript": "7.0.2"
   },
   "peerDependencies": {
-    "oxlint": "^1.82.0"
+    "oxlint": "^1.85.0"
   }
 }
