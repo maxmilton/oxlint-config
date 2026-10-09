@@ -43,6 +43,7 @@
         "properties": true
       }
     ],
+    "eslint/no-duplicate-imports": "off", // covered by import/no-duplicates
     "eslint/no-inline-comments": "off",
     "eslint/no-magic-numbers": "off",
     "eslint/no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
