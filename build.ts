@@ -12,6 +12,8 @@ await Bun.build({
   entrypoints: [Bun.resolveSync("oxclippy", ".")],
   outdir: "dist",
   target: "bun",
+  allowUnresolved: [],
+  env: "disable",
   minify: true,
 });
 console.timeEnd("build");
