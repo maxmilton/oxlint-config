@@ -31,6 +31,8 @@
     "typescript": "7.0.2"
   },
   "peerDependencies": {
-    "oxlint": "^1.86.0"
+  },
+  "optionalDependencies": {
+    "oxlint": "*"
   }
 }
