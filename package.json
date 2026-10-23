@@ -26,14 +26,15 @@
     "test:ci": "bun test --coverage --randomize --rerun-each=5"
   },
   "devDependencies": {
-    "@types/bun": "1.4.2",
+    "@types/bun": "1.4.3",
     "oxclippy": "0.2.0",
-    "oxfmt": "0.71.0",
-    "oxlint": "1.86.0",
-    "oxlint-tsgolint": "7.0.2003",
+    "oxfmt": "0.73.0",
+    "oxlint": "1.88.0",
+    "oxlint-tsgolint": "7.0.2004",
     "typescript": "7.0.2"
   },
   "peerDependencies": {
+    "oxlint": "^1.88.0"
   },
   "optionalDependencies": {
     "oxlint": "*"
