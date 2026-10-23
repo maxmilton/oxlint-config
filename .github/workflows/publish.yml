@@ -4,37 +4,90 @@ on:
   release:
     types: [published]
 
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+  queue: max
+
+permissions: {}
+
 jobs:
-  publish:
-    if: ${{ github.repository_owner == 'maxmilton' }}
+  build:
+    if: ${{ github.repository == 'maxmilton/oxlint-config' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       contents: read
-      id-token: write
     steps:
-      - name: Check valid version tag
-        run: |
-          [[ "$GITHUB_REF" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)? ]] || exit 1
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          bun-version: latest
-      - run: bun install --frozen-lockfile
+          persist-credentials: false
+
+      - name: Validate release
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          [[ "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]] || exit 1
+          [[ "$GITHUB_REF" == "refs/tags/$RELEASE_TAG" ]] || exit 1
+          [[ "$RELEASE_TAG" == "v$(jq -er '.version' package.json)" ]] || exit 1
+          [[ "$(jq -r '.name' package.json)" == "@maxmilton/oxlint-config" ]] || exit 1
+        shell: bash
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
+          no-cache: true
+
+      - run: bun install --frozen-lockfile --ignore-scripts
       - run: bun run build
       - run: bun run lint
       - run: bun run test
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: latest
+          node-version-file: .github/.node-version
+          package-manager-cache: false
+
+      - name: Pack and verify
+        run: .github/scripts/pack-and-verify.sh
+        shell: bash
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: publish.tgz
+          path: publish.tgz
+          archive: false
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: build
+    environment:
+      name: npm-publish
+      url: https://www.npmjs.com/package/@maxmilton/oxlint-config
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/.node-version
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: publish.tgz
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .github/.node-version
           registry-url: "https://registry.npmjs.org"
-      - name: Extract npm tag
+          package-manager-cache: false
+
+      - name: Publish to npm
         run: |
-          if [[ "$GITHUB_REF" =~ v[0-9]+\.[0-9]+\.[0-9]+- ]]; then
-            NPM_TAG=${GITHUB_REF#*v[0-9].[0-9].[0-9]-}; NPM_TAG=${NPM_TAG%%.*}
-          else
-            NPM_TAG=latest
-          fi
-          echo "NPM_TAG=$NPM_TAG" >> $GITHUB_ENV
-      - run: npm publish --provenance --access public --tag ${{ env.NPM_TAG }}
+          npm publish ./publish.tgz --ignore-scripts --provenance --access public --tag latest
         shell: bash
