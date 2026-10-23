@@ -5,7 +5,10 @@
   "bugs": "https://github.com/maxmilton/oxlint-config/issues",
   "license": "MIT",
   "author": "Max Milton <max@2okki.com>",
-  "repository": "github:maxmilton/oxlint-config",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxmilton/oxlint-config.git"
+  },
   "files": [
     "dist",
     "pedantic.json",
@@ -20,7 +23,7 @@
     "lint:js": "oxlint",
     "lint:ts": "tsc --noEmit",
     "test": "bun test --only-failures",
-    "test:ci": "bun test --coverage --randomize --rerun-each=3"
+    "test:ci": "bun test --coverage --randomize --rerun-each=5"
   },
   "devDependencies": {
     "@types/bun": "1.4.2",
