@@ -36,7 +36,9 @@
   "peerDependencies": {
     "oxlint": "^1.88.0"
   },
-  "optionalDependencies": {
-    "oxlint": "*"
+  "peerDependenciesMeta": {
+    "oxlint": {
+      "optional": true
+    }
   }
 }

@@ -8,15 +8,16 @@
         "@types/bun": "1.4.3",
         "oxclippy": "0.2.0",
         "oxfmt": "0.73.0",
+        "oxlint": "1.88.0",
         "oxlint-tsgolint": "7.0.2004",
         "typescript": "7.0.2",
-      },
-      "optionalDependencies": {
-        "oxlint": "*",
       },
       "peerDependencies": {
         "oxlint": "^1.88.0",
       },
+      "optionalPeers": [
+        "oxlint",
+      ],
     },
   },
   "packages": {
